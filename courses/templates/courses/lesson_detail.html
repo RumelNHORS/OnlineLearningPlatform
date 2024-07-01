@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Page info -->
+<div class="page-info-section set-bg" data-setbg="{% static 'webuni/img/page-bg/2.jpg' %}">
+    <div class="container">
+        <div class="site-breadcrumb">
+            <a href="/">Homepage</a>
+            <span>Class /</span>
+            <span>Lesson /</span>
+            <span>Content /</span>
+        </div>
+    </div>
+</div>
+<!-- Page info end -->
+
+<div id="video" class="container">
+    <div class="alert alert-info" role="alert">
+        <p> Read The Contet Carefull To learn about {{ lesson.title }}</p>
+        </div>
+            {% if lesson is not None %}
+            <h1>{{ lesson.title }}</h1>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <p>{{ lesson.content }}</p>
+
+                <div class="text-center">
+            <a href="javascript:history.back()" class="mb-5 mt-2 btn btn-primary">Return to Lessons</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+<!-- templates/courses/enrolled_courses.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Page info -->
+<div class="page-info-section set-bg" data-setbg="{% static 'webuni/img/page-bg/2.jpg' %}">
+  <div class="container">
+    <div class="site-breadcrumb">
+      <a href="/">Homepage</a>
+      <span>My Courses</span>
+    </div>
+  </div>
+</div>
+<!-- Page info end -->
+
+<!-- Enrolled Courses List -->
+<div class="container mt-5">
+  <h1 class="text-center" style="color: orange;">My Enrolled Courses</h1>
+  {% if enrollments %}
+    {% for enrollment in enrollments %}
+      <div class="course-section">
+        <h2 style="color: gray; padding: 10px; position: relative; display: inline-block;">
+          {{ enrollment.course.title }}
+        </h2>
+        <p>Progress: {{ enrollment.progress }}%</p> 
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">SL.No.</th>
+              <th scope="col">Course Name</th>
+              <th scope="col">Lesson Title</th>
+              <th scope="col">Leasson No</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for lesson in enrollment.course.lessons.all %}
+              <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ lesson.course.title}}</td>
+                <td><a href="{% url 'courses:lesson_detail' course_slug=lesson.course.slug lesson_slug=lesson.slug %}">{{ lesson.title }}</a></td>
+                <!-- <td>{{ lesson.content|truncatewords_html:20 }}</td> -->
+                <td>{{ lesson.position}}</td>
+              </tr>
+            {% empty %}
+              <tr>
+                <td colspan="4" class="text-center">No lessons available for this course.</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="text-center">
+      <p>You are not enrolled in any courses yet.</p>
+    </div>
+  {% endif %}
+</div>
+<!-- End Enrolled Courses List -->
+
+{% endblock %}

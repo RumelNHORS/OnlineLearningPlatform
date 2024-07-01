@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<h1 class="mb-4">All Courses</h1>
+
+  {% for course in courses %}
+    <div class="course-item">
+      <h2>{{ course.title }}</h2>
+      <p>{{ course.description }}</p>
+
+      <h4>Lessons:</h4>
+      <ul>
+        {% for lesson in course.lessons.all %}
+          <li>{{ lesson.title }}</li>
+        {% empty %}
+          <li>No lessons available for this course.</li>
+        {% endfor %}
+      </ul>
+
+      <a href="{% url 'courses:course_detail' course.slug %}" class="site-btn price-btn">View Course</a>
+    </div>
+    <hr>
+  {% endfor %}
+
+  <a href="{% url 'courses:create_course' %}" class="site-btn buy-btn">Create New Course</a>
+
+{% endblock %}

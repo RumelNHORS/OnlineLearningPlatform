@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="page-info-section set-bg" data-setbg="{% static 'webuni/img/page-bg/2.jpg' %}">
+  <div class="container">
+    <div class="site-breadcrumb">
+      <a href="/">Homepage</a>
+      <span>Enroll in "{{ course.title }}"</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+    <h2>Enroll in "{{ course.title }}"</h2>
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Enroll</button>
+    </form>
+</div>
+{% endblock %}

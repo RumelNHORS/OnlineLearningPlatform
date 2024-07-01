@@ -1,0 +1,79 @@
+#############################
+Table of Contents
+#############################
+    Introduction
+    User Registration and Sign-In
+    Student Access
+        Enrolling in Courses
+        Viewing Enrolled Courses
+        Tracking Course Progress
+    Teacher Access
+        Requesting a Teacher Account
+        Managing Courses and Lessons
+
+###########################
+Introduction
+############################
+Welcome to our Course Management System! This platform allows users to register as students or teachers to manage and track their courses. Follow the instructions in this manual to navigate and utilize all the features available.
+
+##############################
+User Registration and Sign-In
+##############################
+Before accessing any features, users must register and sign in.
+
+Registration:
+    Open the application.
+    Click on the Register button.
+    Fill in the required details (e.g., name, email, password).
+    Click on Submit to complete the registration process.
+
+Sign-In:
+    Open the application.
+    Click on the Sign In button.
+    Enter your registered email and password.
+    Click on Login to access your account.
+
+##############################
+Student Access
+##############################
+Once registered and signed in, users can access the platform as students.
+
+Enrolling in Courses:
+    Navigate to the Courses section.
+    Browse through the available courses.
+    Click on the course you wish to enroll in.
+    Click the Enroll button.
+
+Viewing Enrolled Courses:
+    Go to the My Courses section.
+    You will see a list of all courses you have enrolled in.
+
+Tracking Course Progress:
+    In the My Courses section, click on any enrolled course.
+    View your progress and completed lessons within the course.
+
+##########################
+Teacher Access
+##########################
+If you want to access the platform as a teacher, you must first request a teacher account.
+
+Requesting a Teacher Account:
+    Register and sign in as a regular user.
+    Go to the Register as a teacher section.
+    Fill in the necessary details and submit the request.
+    Once approved, you will have access to teacher functionalities.
+
+Managing Courses and Lessons:
+    After your teacher account is approved, log in to your account.
+    Go to the Teacher Dashboard.
+    You can add, update, or delete courses and lessons:
+        Create Course: Click on Create Course, fill in the course details, and submit.
+        Update Course: Select a course, make the necessary changes, and save.
+        Delete Course: Select a course and click on Delete.
+        Add Lesson: Within a course, click on Create Lesson, fill in the lesson details, and submit.
+        Update Lesson: Select a lesson, make the necessary changes, and save.
+        Delete Lesson: Select a lesson and click on Delete.
+
+Viewing All Courses and Lessons:
+    Navigate to the Courses section in the Teacher Dashboard.
+    View all available courses and lessons.

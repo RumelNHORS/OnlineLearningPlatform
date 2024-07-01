@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Page info -->
+<div class="page-info-section set-bg" data-setbg="{% static 'webuni/img/page-bg/2.jpg' %}">
+  <div class="container">
+    <div class="site-breadcrumb">
+      <a href="/">Homepage</a>
+      <span>Class /</span>
+      <span>Lesson</span>
+    </div>
+  </div>
+</div>
+<!-- Page info end -->
+
+
+<!-- single course section -->
+<section class="single-course spad pb-0">
+  <div class="container">
+    <div class="course-meta-area">
+      <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+          <h3>{{ course.title|capfirst }}</h3>
+          <div class="course-metas">
+            <div class="course-meta">
+              <div class="course-author">
+                <h6>Teacher</h6>
+                <p>{{ course.creator.username|capfirst }}, <span>Teacher</span></p>
+              </div>
+            </div>
+            <div class="course-meta">
+              <div class="cm-info">
+                <h6>Class Description</h6>
+                <p>{{ course.description }}</p>
+              </div>
+            </div>
+            <div class="course-meta">
+              <div class="cm-info">
+                <h6>Number of Lessons</h6>
+                <p>{{ course.lessons.count }}</p>
+              </div>
+            </div>
+          </div>
+          <!-- <a href="{% url 'courses:course_edit' course.slug %}" class="site-btn price-btn">Edit</a> -->
+          <a href="{% url 'courses:all_courses' %}" class="site-btn buy-btn">Go to All Courses</a>
+        </div>
+      </div>
+    </div>
+    <img src="img/courses/single.jpg" alt="" class="course-preview">
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1 course-list">
+        <div class="cl-item" id="lessons">
+          <h4>Lessons in this Course</h4>
+          {% if lessons %}
+            {% for lesson in lessons %}
+            <div data-aos="fade-right">
+              <h5 class="pb-3">Lesson {{ lesson.position }} <span class="pl-4">{{ lesson.title }}</span></h5>
+            </div>
+            {% endfor %}
+          {% else %}
+          <div class="alert alert-danger">No lessons available for this class yet!</div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <title>LearnOnline - Learn Online</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="WebUni Education Template">
+    <meta name="keywords" content="webuni, education, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link href="{% static 'webuni/img/learn_logo3.jpg' %}" rel="shortcut icon"/>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{% static 'webuni/css/bootstrap.min.css'%}"/>
+    <link rel="stylesheet" href="{% static 'webuni/css/font-awesome.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'webuni/css/owl.carousel.css' %}"/>
+    <link rel="stylesheet" href="{% static 'webuni/css/style.css'%}"/>
+    <link rel="stylesheet" href="{% static 'webuni/css/freelancer.css'%}"/>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+</head>
+<body>
+    <!-- Page Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase" id="mainNav">
+        <div class="container">
+          <a class="navbar-brand js-scroll-trigger" href="/"><img src="{% static 'webuni/img/learn_logo3.jpg' %}" alt=""></a>
+          <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger" href="{% url 'courses:home' %}">Home</a>
+              </li>
+
+              {% if request.user.profile.is_teacher == True %}
+            
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger" href="{% url 'courses:create_course' %}">Create Course</a>
+              </li>
+
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger" href="{% url 'courses:create_lesson' %}">Create Lesson</a>
+              </li>
+
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger" href="{% url 'courses:all_courses' %}">Courses</a>
+              </li>
+
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger" href="{% url 'courses:lesson_list' %}">Lessons</a>
+              </li>
+
+              {% else %}
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger" href="{% url 'courses:about' %}">About</a>
+              </li>
+              
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger" href="{% url 'courses:all_courses' %}">Courses</a>
+              </li>
+
+              {% endif %}
+              {% if request.user.is_authenticated %}
+
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger" href="{% url 'courses:enrolled_courses' %}">My Courses</a>
+              </li>
+            
+
+              <div class="dropdown show">
+                <a class="dropdown-toggle nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{request.user.username}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="{% url 'users:profile' %}">Profile</a>
+                  <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
+                </div>
+              </div>
+              {% else %}
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="active nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger" href="{% url 'account_login' %}">Login</a>
+              </li>
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="active nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger" href="{% url 'account_signup' %}">Sign Up</a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+{% include 'inc/messages.html' %}
+{% block content %}
+
+{% endblock content %}
+
+{% if not request.user.is_authenticated %}
+    <!-- banner section -->
+    <section class="banner-section spad">
+        <div class="container">
+            <div class="section-title mb-0 pb-2">
+                <h2>Join our community!</h2>
+                <p>Learn online lessons and courses subjects for free through videos/contents and communication with teachers and other members of LearnOnline. It's very simple, the only thing you need to do is Register. Click below:</p>
+            </div>
+            <div class="text-center pt-5">
+                <a href="{% url 'account_signup' %}" class="site-btn">Sign Up Now</a>
+            </div>
+        </div>
+    </section>
+    <!-- banner section end -->
+{% endif %}
+
+    <!-- footer section -->
+    <footer class="footer-section spad pb-0">
+        <div class="footer-top">
+            <div class="footer-warp">
+                <div class="row">
+                    <div class="widget-item">
+                        <h4>Contact Information</h4>
+                        <ul class="contact-list">
+                            <li>Rumel <br>Islam</li>
+                            <li>+880 15 6825 1557</li>
+                            <li>rumelnhors52@gmail.com</li>
+                        </ul>
+                    </div>
+                    <div class="widget-item">
+                        <h4>Classes</h4>
+                        <ul>
+                            <li><a href="">Technology and Programming</a></li>
+                            <li><a href="">Business and Management</a></li>
+                            <li><a href="">Arts and Humanities
+                            </a></li>
+                            <li><a href="">Health and Wellness</a></li>
+                            <li><a href="">Science and Engineering, etc.</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget-item">
+                        <h4>Staff</h4>
+                        <ul>
+                            <li><a href="">Teachers</a></li>
+                            <li><a href="">Awards</a></li>
+                            <li><a href="">Best Students</a></li>
+                            <li><a href="">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget-item">
+                        <h4>Social Networks</h4>
+                        <ul>
+                            <li><a href="">YouTube</a></li>
+                            <li><a href="">Facebook</a></li>
+                            <li><a href="">Instagram</a></li>
+                            <li><a href="">Twitter</a></li>
+                            <li><a href="">LinkedIn</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-warp">
+                <ul class="footer-menu">
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Register</a></li>
+                    <li><a href="#">Privacy</a></li>
+                </ul>
+                <div class="">
+                    Copyright &copy; LearnOnline <script>document.write(new Date().getFullYear());</script> All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer section end -->
+
+    <!--====== JavaScripts & jQuery ======-->
+    <script src="{% static 'webuni/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'webuni/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'webuni/js/mixitup.min.js' %}"></script>
+    <script src="{% static 'webuni/js/circle-progress.min.js' %}"></script>
+    <script src="{% static 'webuni/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'webuni/js/main.js' %}"></script>
+    <script src="{% static 'webuni/js/freelancer.js' %}"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</html>
